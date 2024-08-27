@@ -4,7 +4,8 @@ const qrcode = require('qrcode-terminal');
 const client = new Client();
 
 client.on('qr', qr => {
-    // Generate and scan this QR code with your phone
+    // Log that a new QR code has been generated
+    console.log('New QR Code generated. Scan it quickly!');
     qrcode.generate(qr, { small: true });
 });
 
