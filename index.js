@@ -12,15 +12,20 @@ client.on('ready', () => {
     console.log('Client is ready!');
 });
 
+// Function to introduce a delay
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 client.on('message', async message => {
     console.log(`Received message from: ${message.from}`);
     console.log(`Message content: ${message.body}`);
 
-    const sender = '6XXXXXXXXXX@c.us'; // Sender's WhatsApp number
-    const recipient = '6XXXXXXXXXX@c.us'; // Recipient's WhatsApp number
+    const sender = '6XXXXXXX@c.us'; // Sender's WhatsApp number
+    const recipient = '6XXXXXXX@c.us'; // Recipient's WhatsApp number
 
     if (message.from === sender) {
+        // Introduce a delay before forwarding the message
+        await delay(2000); // 2 seconds delay
+
         if (message.hasMedia) {
             // Forward media (images, videos, documents)
             const media = await message.downloadMedia();
